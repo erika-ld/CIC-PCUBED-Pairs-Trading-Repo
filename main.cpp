@@ -9,10 +9,10 @@
 
 using namespace std;
 
-string date[300];
-double open[300];
-double high[300];
-double low[300];
-double close[300];
-double adj_close[300];
-int volume[300];
+vector<string> date(300, "");
+vector<double> open(300, 0.0);
+vector<double> high(300, 0.0);
+vector<double> low(300, 0.0);
+vector<double> close(300, 0.0);
+vector<double> adj_close(300, 0.0);
+vector<int> volume(300, 0);
