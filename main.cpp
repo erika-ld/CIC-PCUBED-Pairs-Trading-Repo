@@ -8,3 +8,11 @@
 // Stocks to be analyzed:
 
 using namespace std;
+
+string date[300];
+double open[300];
+double high[300];
+double low[300];
+double close[300];
+double adj_close[300];
+int volume[300];
