@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    cout << "test" << endl;
+    cout << "working if this prints" << endl;
 
     // Declaration of vector variables for each column in .csv files, sized 300 for row count
     // Purpose: Utilize parallel array data structures to contain attributes of same data element
@@ -23,7 +23,7 @@ int main()
     vector<double> adj_close(300, 0.0);
     vector<int> volume(300, 0);
 
-    cout << volume[12] << endl;
+    
 
     return 0;
 }
