@@ -23,12 +23,21 @@ int main()
     vector<double> adj_close(300, 0.0);
     vector<int> volume(300, 0);
 
-    //Declared & initialized double variables to be used in calculation of statistical values
-    double mean = 0.0;
-    double range = 0.0;
-    double std_dev = 0.0;
-    double variance = 0.0;
-    double iqr = 0.0;
+    //Declared & initialized double variables for Lenovo (len) to be used in calculation of statistical values
+    double len_mean = 0.0;
+    double len_range = 0.0;
+    double len_std_dev = 0.0;
+    double len_variance = 0.0;
+    double len_iqr = 0.0;
+
+    // Declared & initialized double variables for Motorola (mot) to be used in calculation of statistical values
+    double mot_mean = 0.0;
+    double mot_range = 0.0;
+    double mot_std_dev = 0.0;
+    double mot_variance = 0.0;
+    double mot_iqr = 0.0;
+
+    //Declared & initialized double variables for the correlation and cointegration of the two data sets
     double correlation = 0.0;
     double cointegration = 0.0;
 
