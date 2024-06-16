@@ -23,7 +23,18 @@ int main()
     vector<double> adj_close(300, 0.0);
     vector<int> volume(300, 0);
 
-    
+    //Declared & initialized double variables to be used in calculation of statistical values
+    double mean = 0.0;
+    double range = 0.0;
+    double std_dev = 0.0;
+    double variance = 0.0;
+    double iqr = 0.0;
+    double correlation = 0.0;
+    double cointegration = 0.0;
+
+    //Declared & initialized boolean variables to be used to flag when there is opportunity for exercising pairs trading concepts
+    //trade_flag will be raised (set to true) when a certain threshold of separation between stock values is reached
+    bool trade_flag = false;
 
     return 0;
 }
