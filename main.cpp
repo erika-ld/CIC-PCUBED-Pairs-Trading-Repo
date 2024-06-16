@@ -9,10 +9,21 @@
 
 using namespace std;
 
-string date[300];
-double open[300];
-double high[300];
-double low[300];
-double close[300];
-double adj_close[300];
-int volume[300];
+int main()
+{
+    cout << "working if this prints" << endl;
+
+    // Declaration of vector variables for each column in .csv files, sized 300 for row count
+    // Purpose: Utilize parallel array data structures to contain attributes of same data element
+    vector<string> date(300, "");
+    vector<double> open(300, 0.0);
+    vector<double> high(300, 0.0);
+    vector<double> low(300, 0.0);
+    vector<double> close(300, 0.0);
+    vector<double> adj_close(300, 0.0);
+    vector<int> volume(300, 0);
+
+    
+
+    return 0;
+}
