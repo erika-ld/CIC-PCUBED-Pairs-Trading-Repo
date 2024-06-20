@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 #include <chrono>
@@ -12,16 +13,43 @@ using namespace std;
 int main()
 {
     cout << "working if this prints" << endl;
-
-    // Declaration of vector variables for each column in .csv files, sized 300 for row count
+    
+    // Declaration of vector variables for each column in Lenovo's csv file, sized 300 for row count
     // Purpose: Utilize parallel array data structures to contain attributes of same data element
-    vector<string> date(300, "");
-    vector<double> open(300, 0.0);
-    vector<double> high(300, 0.0);
-    vector<double> low(300, 0.0);
-    vector<double> close(300, 0.0);
-    vector<double> adj_close(300, 0.0);
-    vector<int> volume(300, 0);
+    vector<string> len_date(300, "");
+    vector<double> len_open(300, 0.0);
+    vector<double> len_high(300, 0.0);
+    vector<double> len_low(300, 0.0);
+    vector<double> len_close(300, 0.0);
+    vector<double> len_adj_close(300, 0.0);
+    vector<int> len_volume(300, 0);
+
+    // Declaration of vector variables for each column in Motorola's csv file, sized 300 for row count
+    // Purpose: Utilize parallel array data structures to contain attributes of same data element
+    vector<string> mot_date(300, "");
+    vector<double> mot_open(300, 0.0);
+    vector<double> mot_high(300, 0.0);
+    vector<double> mot_low(300, 0.0);
+    vector<double> mot_close(300, 0.0);
+    vector<double> mot_adj_close(300, 0.0);
+    vector<int> mot_volume(300, 0);
+
+    // Reading in csv file values for Lenovo and inputting it into corresponding parallel arrays
+    fstream lenovo_input_file;
+    lenovo_input_file.open("LNVGF.csv", ios::in);
+
+    if (!lenovo_input_file.is_open())
+    {
+        cerr << "Error: LNVGF.csv could not be opened." << endl;
+        return 0;
+    }
+
+    string row;
+
+    while (getline(lenovo_input_file, row))
+    {
+        cout << row << endl; // Print the current line
+    }
 
     //Declared & initialized double variables for Lenovo (len) to be used in calculation of statistical values
     double len_mean = 0.0;
