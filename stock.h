@@ -8,11 +8,11 @@
 class Stock
 {
 public:
-    void calc_mean();
-    void calc_range();
-    void calc_std_dev();
-    void calc_variance();
-    void calc_iqr();
+    void calc_set_mean();
+    void calc_set_range();
+    void calc_set_std_dev();
+    void calc_set_variance();
+    void calc_set_iqr();
 
     double get_mean();
     double get_range();
