@@ -72,9 +72,9 @@ void Stock::SetRange(double range)
     this->range_ = range;
 }
 
-void Stock::SetStdDev(double stdDev)
+void Stock::SetStdDev(double std_dev)
 {
-    this->std_dev_ = stdDev;
+    this->std_dev_ = std_dev;
 }
 
 void Stock::SetVariance(double variance)

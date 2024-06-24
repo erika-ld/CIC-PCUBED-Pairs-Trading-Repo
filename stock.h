@@ -16,7 +16,7 @@ public:
 
     void SetMean(double Mean);
     void SetRange(double Range);
-    void SetStdDev(double StdDev);
+    void SetStdDev(double std_dev);
     void SetVariance(double Variance);
     void SetIQR(double IQR);
 
