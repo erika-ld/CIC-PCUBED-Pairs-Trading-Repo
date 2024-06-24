@@ -95,6 +95,7 @@ Stock Stock::GetStock()
 const std::vector<std::string>& Stock::GetDates()
 {
     return this->dates_;
+    return this->dates_;
 }
 
 const std::vector<double> &Stock::GetOpens()
