@@ -54,6 +54,7 @@ double Stock::CalcVariance()
     for (double x : this->adj_closes_)
     {
         sum += pow((x - this->mean_), 2);
+        sum += pow((x - this->mean_), 2);
     }
     int size = adj_closes_.size();
     double variance = (sum / size);
@@ -99,20 +100,24 @@ const std::vector<std::string>& Stock::GetDates()
 const std::vector<double> &Stock::GetOpens()
 {
     return this->opens_;
+    return this->opens_;
 }
 
 const std::vector<double>& Stock::GetHighs()
 {
+    return this->highs_;
     return this->highs_;
 }
 
 const std::vector<double>& Stock::GetLows()
 {
     return this->lows_;
+    return this->lows_;
 }
 
 const std::vector<double>& Stock::GetCloses()
 {
+    return this->closes_;
     return this->closes_;
 }
 
@@ -124,15 +129,18 @@ const std::vector<double>& Stock::GetAdjCloses()
 const std::vector<double>& Stock::GetVolumes()
 {
     return this->volumes_;
+    return this->volumes_;
 }
 
 double Stock::GetMean()
 {
     return this->mean_;
+    return this->mean_;
 }
 
 double Stock::GetRange()
 {
+    return this->range_;
     return this->range_;
 }
 
@@ -144,9 +152,11 @@ double Stock::GetStdDev()
 double Stock::GetVariance()
 {
     return this->variance_;
+    return this->variance_;
 }
 
 double Stock::GetIqr()
 {
+    return this->iqr_;
     return this->iqr_;
 }
