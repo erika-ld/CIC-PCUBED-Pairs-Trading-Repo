@@ -36,22 +36,22 @@ public:
     double GetIQR();
 
 private:
-    std::vector<std::string> Dates_;
-    std::vector<double> Opens_;
-    std::vector<double> Highs_;
-    std::vector<double> Lows_;
-    std::vector<double> Closes_;
-    std::vector<double> AdjCloses_;
-    std::vector<double> Volumes_;
+    std::vector<std::string> dates_;
+    std::vector<double> opens_;
+    std::vector<double> highs_;
+    std::vector<double> lows_;
+    std::vector<double> closes_;
+    std::vector<double> adj_closes_;
+    std::vector<double> volumes_;
 
-    double Mean_;
-    double Range_;
-    double StdDev_;
-    double Variance_;
-    double IQR_;
+    double mean_;
+    double range_;
+    double std_dev_;
+    double variance_;
+    double iqr_;
 
-    double Cointegration_;
-    bool TradeFlag_;
+    double cointegration_;
+    bool trade_flag_;
 };
 
 #endif
