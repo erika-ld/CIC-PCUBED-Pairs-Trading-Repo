@@ -14,11 +14,11 @@ public:
     double CalcVariance();
     double CalcIQR();
 
-    void SetMean(double Mean);
-    void SetRange(double Range);
-    void SetStdDev(double StdDev);
-    void SetVariance(double Variance);
-    void SetIQR(double IQR);
+    void SetMean(double mean);
+    void SetRange(double range);
+    void SetStdDev(double stdDev);
+    void SetVariance(double variance);
+    void SetIQR(double iqr);
 
     Stock GetStock();
 
