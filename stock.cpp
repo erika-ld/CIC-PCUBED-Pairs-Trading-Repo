@@ -7,24 +7,24 @@
 
 using namespace std;
 
-void Stock::calc_set_mean()
+double Stock::CalcMean()
 {
     double sum = 0.0;
-    for (double x : this->adj_closes)
+    for (double x : this->adj_closes_)
     {
         sum += x;
     }
 
-    int size = adj_closes.size();
+    int size = adj_closes_.size();
     double mean = sum / size;
-    this->mean = mean;
+    return mean;
 }
 
-void Stock::calc_set_range()
+double Stock::CalcRange()
 {
-    int max = this->adj_closes.at(0);
-    int min = this->adj_closes.at(0);
-    for (double x: this->adj_closes)
+    int max = this->adj_closes_.at(0);
+    int min = this->adj_closes_.at(0);
+    for (double x: this->adj_closes_)
     {
         if (x > max)
         {
@@ -37,95 +37,116 @@ void Stock::calc_set_range()
         }
     }
     double range = max - min;
-    this->range = range;
+    return range;
 }
 
-void Stock::calc_set_std_dev()
+double Stock::CalcStdDev()
 {
-    this->calc_set_variance();
-    double std_dev = sqrt(this->variance);
-    this->std_dev = std_dev;
+    this->CalcVariance();
+    double std_dev = sqrt(this->variance_);
+    return std_dev;
 }
 
-void Stock::calc_set_variance()
+double Stock::CalcVariance()
 {
-    this->calc_set_mean();
+    this->CalcMean();
     double sum = 0.0;
-    for (double x : this->adj_closes)
+    for (double x : this->adj_closes_)
     {
-        sum += pow((x - this->mean), 2);
+        sum += pow((x - this->mean_), 2);
     }
-    int size = adj_closes.size();
+    int size = adj_closes_.size();
     double variance = (sum / size);
-    this->variance = variance;
+    return variance;
 }
 
-void Stock::calc_set_iqr()
+double Stock::CalcIqr()
 {
-    this->iqr = iqr;
+
 }
 
-Stock Stock::get_stock()
+void Stock::SetMean(double mean)
+{
+    mean_ = mean;
+}
+void Stock::SetRange(double range)
+{
+    range_ = range;
+}
+void Stock::SetStdDev(double std_dev)
+{
+    std_dev_ = std_dev;
+}
+void Stock::SetVariance(double variance)
+{
+    variance_ = variance;
+}
+void Stock::SetIqr(double iqr)
+{
+    iqr_ = iqr;
+}
+
+Stock Stock::GetStock()
 {
     return *this;
 }
 
-const std::vector<std::string>& Stock::get_dates()
+const std::vector<std::string>& Stock::GetDates()
 {
-    return this->dates;
+    return this->dates_;
 }
 
-const std::vector<double> &Stock::get_opens()
+const std::vector<double> &Stock::GetOpens()
 {
-    return this->opens;
+    return this->opens_;
 }
 
-const std::vector<double>& Stock::get_highs()
+const std::vector<double>& Stock::GetHighs()
 {
-    return this->highs;
+    return this->highs_;
 }
 
-const std::vector<double>& Stock::get_lows()
+const std::vector<double>& Stock::GetLows()
 {
-    return this->lows;
+    return this->lows_;
 }
 
-const std::vector<double>& Stock::get_closes()
+const std::vector<double>& Stock::GetCloses()
 {
-    return this->closes;
+    return this->closes_;
 }
 
-const std::vector<double>& Stock::get_adj_closes()
+const std::vector<double>& Stock::GetAdjCloses()
 {
-    return this->adj_closes;
+    return this->adj_closes_;
 }
 
-const std::vector<double>& Stock::get_volumes()
+const std::vector<double>& Stock::GetVolumes()
 {
-    return this->volumes;
+    return this->volumes_;
 }
 
-double Stock::get_mean()
+double Stock::GetMean()
 {
-    return this->mean;
+    return this->mean_;
 }
 
-double Stock::get_range()
+double Stock::GetRange()
 {
-    return this->range;
+    return this->range_;
 }
 
-double Stock::get_std_dev()
+double Stock::GetStdDev()
 {
-    return this->std_dev;
+    return this->std_dev_;
 }
 
-double Stock::get_variance()
+double Stock::GetVariance()
 {
-    return this->variance;
+    return this->variance_;
 }
 
-double Stock::get_iqr()
+double Stock::GetIqr()
 {
-    return this->iqr;
+    return this->iqr_;
 }
