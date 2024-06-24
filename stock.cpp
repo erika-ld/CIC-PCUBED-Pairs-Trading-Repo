@@ -10,20 +10,20 @@ using namespace std;
 double Stock::CalcMean()
 {
     double sum = 0.0;
-    for (double x : this->AdjCloses_)
+    for (double x : this->adj_closes_)
     {
         sum += x;
     }
 
-    int size = AdjCloses_.size();
+    int size = adj_closes_.size();
     return (sum / size);
 }
 
 double Stock::CalcRange()
 {
-    int max = this->AdjCloses_.at(0);
-    int min = this->AdjCloses_.at(0);
-    for (double x : this->AdjCloses_)
+    int max = this->adj_closes_.at(0);
+    int min = this->adj_closes_.at(0);
+    for (double x : this->adj_closes_)
     {
         if (x > max)
         {
@@ -41,50 +41,50 @@ double Stock::CalcRange()
 double Stock::CalcStdDev()
 {
     this->CalcVariance();
-    return (sqrt(this->Variance_));
+    return (sqrt(this->variance_));
 }
 
 double Stock::CalcVariance()
 {
     this->CalcMean();
     double sum = 0.0;
-    for (double x : this->AdjCloses_)
+    for (double x : this->adj_closes_)
     {
-        sum += pow((x - this->Mean_), 2);
+        sum += pow((x - this->mean_), 2);
     }
-    int size = AdjCloses_.size();
+    int size = adj_closes_.size();
     return (sum / size);
 }
 
 double Stock::CalcIQR()
 {
     //TO-DO: FINISH IQR
-    this->IQR_ = IQR_;
+    this->iqr_ = iqr_;
 }
 
-void Stock::SetMean(double Mean)
+void Stock::SetMean(double mean)
 {
-    this->Mean_ = Mean;
+    this->mean_ = mean;
 }
 
-void Stock::SetRange(double Range)
+void Stock::SetRange(double range)
 {
-    this->Range_ = Range;
+    this->range_ = range;
 }
 
-void Stock::SetStdDev(double StdDev)
+void Stock::SetStdDev(double stdDev)
 {
-    this->StdDev_ = StdDev;
+    this->std_dev_ = stdDev;
 }
 
-void Stock::SetVariance(double Variance)
+void Stock::SetVariance(double variance)
 {
-    this->Variance_ = Variance;
+    this->variance_ = variance;
 }
 
-void Stock::SetIQR(double IQR)
+void Stock::SetIQR(double iqr)
 {
-    this->IQR_ = IQR;
+    this->iqr_ = iqr;
 }
 
 Stock Stock::GetStock()
@@ -94,60 +94,60 @@ Stock Stock::GetStock()
 
 const std::vector<std::string>& Stock::GetDates()
 {
-    return this->Dates_;
+    return this->dates_;
 }
 
 const std::vector<double> &Stock::GetOpens()
 {
-    return this->Opens_;
+    return this->opens_;
 }
 
 const std::vector<double>& Stock::GetHighs()
 {
-    return this->Highs_;
+    return this->highs_;
 }
 
 const std::vector<double>& Stock::GetLows()
 {
-    return this->Lows_;
+    return this->lows_;
 }
 
 const std::vector<double>& Stock::GetCloses()
 {
-    return this->Closes_;
+    return this->closes_;
 }
 
 const std::vector<double>& Stock::GetAdjCloses()
 {
-    return this->AdjCloses_;
+    return this->adj_closes_;
 }
 
 const std::vector<double>& Stock::GetVolumes()
 {
-    return this->Volumes_;
+    return this->volumes_;
 }
 
 double Stock::GetMean()
 {
-    return this->Mean_;
+    return this->mean_;
 }
 
 double Stock::GetRange()
 {
-    return this->Range_;
+    return this->range_;
 }
 
 double Stock::GetStdDev()
 {
-    return this->StdDev_;
+    return this->std_dev_;
 }
 
 double Stock::GetVariance()
 {
-    return this->Variance_;
+    return this->variance_;
 }
 
 double Stock::GetIQR()
 {
-    return this->IQR_;
+    return this->iqr_;
 }
