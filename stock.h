@@ -8,44 +8,50 @@
 class Stock
 {
 public:
-    void calc_set_mean();
-    void calc_set_range();
-    void calc_set_std_dev();
-    void calc_set_variance();
-    void calc_set_iqr();
+    double calcMean();
+    double calcRange();
+    double calcStdDev();
+    double calcVariance();
+    double calcIQR();
 
-    Stock get_stock();
+    void setMean(double mean);
+    void setRange(double range);
+    void setStdDev(double stdDev);
+    void setVariance(double variance);
+    void setIQR(double iqr);
 
-    const std::vector<std::string>& get_dates();
-    const std::vector<double>& get_opens();
-    const std::vector<double>& get_highs();
-    const std::vector<double>& get_lows();
-    const std::vector<double>& get_closes();
-    const std::vector<double>& get_adj_closes();
-    const std::vector<double>& get_volumes();
-    double get_mean();
-    double get_range();
-    double get_std_dev();
-    double get_variance();
-    double get_iqr();
+    Stock getStock();
+
+    const std::vector<std::string>& getDates();
+    const std::vector<double>& getOpens();
+    const std::vector<double>& getHighs();
+    const std::vector<double>& getLows();
+    const std::vector<double>& getCloses();
+    const std::vector<double>& getAdjCloses();
+    const std::vector<double>& getVolumes();
+    double getMean();
+    double getRange();
+    double getStdDev();
+    double getVariance();
+    double getIQR();
 
 private:
-    std::vector<std::string> dates;
-    std::vector<double> opens;
-    std::vector<double> highs;
-    std::vector<double> lows;
-    std::vector<double> closes;
-    std::vector<double> adj_closes;
-    std::vector<double> volumes;
+    std::vector<std::string> dates_;
+    std::vector<double> opens_;
+    std::vector<double> highs_;
+    std::vector<double> lows_;
+    std::vector<double> closes_;
+    std::vector<double> adjCloses_;
+    std::vector<double> volumes_;
 
-    double mean;
-    double range;
-    double std_dev;
-    double variance;
-    double iqr;
+    double mean_;
+    double range_;
+    double stdDev_;
+    double variance_;
+    double iqr_;
 
-    double cointegration;
-    bool trade_flag;
+    double cointegration_;
+    bool tradeFlag_;
 };
 
 #endif
