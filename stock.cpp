@@ -4,6 +4,8 @@
 #include <string>
 #include <math.h>
 #include <cmath>
+#include <algorithm>
+#include <iterator>
 
 using namespace std;
 
@@ -58,8 +60,18 @@ double Stock::CalcVariance()
 
 double Stock::CalcIQR()
 {
-    //TO-DO: FINISH IQR
-    this->iqr_ = iqr_;
+    vector<double> temp_v = this->adj_closes_;
+    sort(temp_v.begin(), temp_v.end());
+
+    vector<double> adj_closes_data;
+    copy(adj_closes_.begin() + 1, adj_closes_.end(), back_inserter(adj_closes_data));
+    
+    //Size should be 253
+    int size = adj_closes_data.size();
+    int median_index = (size / 2);
+    int q1 = ceil((size / 4));
+    int q3 = ceil((3 * (size / 4)));
+    return adj_closes_data.at(q3) - adj_closes_data.at(q1);
 }
 
 void Stock::SetMean(double mean)
