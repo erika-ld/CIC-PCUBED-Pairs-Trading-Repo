@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 class Stock
 {
@@ -20,6 +22,14 @@ public:
     void SetVariance(double variance);
     void SetIQR(double iqr);
 
+    void SetDatesVec(std::ifstream & file);
+    void SetOpensVec(std::ifstream &file);
+    void SetHighsVec(std::ifstream &file);
+    void SetLowsVec(std::ifstream &file);
+    void SetClosesVec(std::ifstream &file);
+    void SetAdjClosesVec(std::ifstream &file);
+    void SetVolumesVec(std::ifstream &file);
+
     Stock GetStock();
 
     const std::vector<std::string>& GetDates();
@@ -34,6 +44,7 @@ public:
     double GetStdDev();
     double GetVariance();
     double GetIQR();
+
 
 private:
     std::vector<std::string> dates_;

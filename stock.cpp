@@ -6,8 +6,12 @@
 #include <cmath>
 #include <algorithm>
 #include <iterator>
+#include "Eigen/Dense"
 
 using namespace std;
+
+const int MAX_ROWS = 254;
+const int MAX_COLS = 7;
 
 double Stock::CalcMean()
 {
@@ -99,6 +103,182 @@ void Stock::SetIQR(double iqr)
     this->iqr_ = iqr;
 }
 
+void Stock::SetDatesVec(ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[0]);
+    }
+}
+
+void Stock::SetOpensVec(ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[1]);
+    }
+}
+
+void Stock::SetHighsVec(std::ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[2]);
+    }
+}
+
+void Stock::SetLowsVec(std::ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[3]);
+    }
+}
+
+void Stock::SetClosesVec(std::ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[4]);
+    }
+}
+
+void Stock::SetAdjClosesVec(std::ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[5]);
+    }
+}
+
+void Stock::SetVolumesVec(std::ifstream &file)
+{
+    if (!file.is_open())
+    {
+        cerr << "Error opening file!" << endl;
+    }
+    else
+    {
+        string temp_arr[MAX_COLS];
+        string line;
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string cell;
+            int col = 0;
+            while (getline(ss, cell, ',') && col < MAX_COLS)
+            {
+                temp_arr[col] = cell;
+                col++;
+            }
+        }
+        this->dates_.push_back(temp_arr[6]);
+    }
+}
+
+
 Stock Stock::GetStock()
 {
     return *this;
@@ -163,3 +343,5 @@ double Stock::GetIQR()
 {
     return this->iqr_;
 }
+
+
