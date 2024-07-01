@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int MAX_ROWS = 254;
+const int MAX_ROWS = 253;
 const int MAX_COLS = 7;
 
 double Stock::CalcMean()
@@ -118,13 +118,17 @@ void Stock::SetDatesVec(ifstream &file)
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS)
+                {
+                    temp_arr[col] = cell;
+                    col++;
+                }
+                this->dates_.push_back(temp_arr[0]);
             }
+        //file.close();
         }
-        this->dates_.push_back(temp_arr[0]);
     }
 }
 
@@ -136,20 +140,24 @@ void Stock::SetOpensVec(ifstream &file)
     }
     else
     {
-        string temp_arr[MAX_COLS];
+        double temp_arr[MAX_COLS];
         string line;
         while (getline(file, line))
         {
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS)
+                {
+                    temp_arr[col] = stod(cell);
+                    col++;
+                }
+                this->opens_.push_back(temp_arr[1]);
             }
         }
-        this->dates_.push_back(temp_arr[1]);
+        //file.close();
     }
 }
 
@@ -161,20 +169,24 @@ void Stock::SetHighsVec(std::ifstream &file)
     }
     else
     {
-        string temp_arr[MAX_COLS];
+        double temp_arr[MAX_COLS];
         string line;
         while (getline(file, line))
         {
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS)
+                {
+                    temp_arr[col] = stod(cell);
+                    col++;
+                }
+            this->highs_.push_back(temp_arr[2]);
             }
         }
-        this->dates_.push_back(temp_arr[2]);
+        //file.close();
     }
 }
 
@@ -186,20 +198,24 @@ void Stock::SetLowsVec(std::ifstream &file)
     }
     else
     {
-        string temp_arr[MAX_COLS];
+        double temp_arr[MAX_COLS];
         string line;
         while (getline(file, line))
         {
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS)
+                {
+                    temp_arr[col] = stod(cell);
+                    col++;
+                }
+            this->lows_.push_back(temp_arr[3]);
             }
         }
-        this->dates_.push_back(temp_arr[3]);
+        //file.close();
     }
 }
 
@@ -211,20 +227,24 @@ void Stock::SetClosesVec(std::ifstream &file)
     }
     else
     {
-        string temp_arr[MAX_COLS];
+        double temp_arr[MAX_COLS];
         string line;
         while (getline(file, line))
         {
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS)
+                {
+                    temp_arr[col] = stod(cell);
+                    col++;
+                }
+            this->closes_.push_back(temp_arr[4]);
             }
         }
-        this->dates_.push_back(temp_arr[4]);
+        //file.close();
     }
 }
 
@@ -236,20 +256,24 @@ void Stock::SetAdjClosesVec(std::ifstream &file)
     }
     else
     {
-        string temp_arr[MAX_COLS];
+        double temp_arr[MAX_COLS];
         string line;
         while (getline(file, line))
         {
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS && !isalpha(line[0]))
+                {
+                    temp_arr[col] = stod(cell);
+                    col++;
+                }
+            this->adj_closes_.push_back(temp_arr[5]);
             }
         }
-        this->dates_.push_back(temp_arr[5]);
+        //file.close();
     }
 }
 
@@ -261,23 +285,26 @@ void Stock::SetVolumesVec(std::ifstream &file)
     }
     else
     {
-        string temp_arr[MAX_COLS];
+        double temp_arr[MAX_COLS];
         string line;
         while (getline(file, line))
         {
             stringstream ss(line);
             string cell;
             int col = 0;
-            while (getline(ss, cell, ',') && col < MAX_COLS)
+            if (!isalpha(line[0]))
             {
-                temp_arr[col] = cell;
-                col++;
+                while (getline(ss, cell, ',') && col < MAX_COLS && !isalpha(line[0]))
+                {
+                    temp_arr[col] = stod(cell);
+                    col++;
+                }
+            this->volumes_.push_back(temp_arr[6]);
             }
         }
-        this->dates_.push_back(temp_arr[6]);
+        //file.close();
     }
 }
-
 
 Stock Stock::GetStock()
 {
@@ -286,6 +313,7 @@ Stock Stock::GetStock()
 
 const std::vector<std::string>& Stock::GetDates()
 {
+    
     return this->dates_;
 }
 
