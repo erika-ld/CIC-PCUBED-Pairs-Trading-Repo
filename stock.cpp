@@ -317,7 +317,7 @@ void Stock::SetVolumesVec(std::ifstream &file)
 
 void Stock::SetStockRecords()
 {
-    ofstream output_file("StockRecords.txt");
+    ofstream output_file("LenovoStockRecords.txt");
 
     if (!output_file.is_open())
     {
