@@ -20,65 +20,38 @@ int main()
 {
     cout << "working if this prints" << endl;
 
-    // Declaration of vector variables for each column in Lenovo's csv file, sized 300 for row count
-    // Purpose: Utilize parallel array data structures to contain attributes of same data element
-
-    /*
-    vector<string> len_date;
-    vector<double> len_open;
-    vector<double> len_high;
-    vector<double> len_low;
-    vector<double> len_close;
-    vector<double> len_adj_close;
-    vector<int> len_volume;
-    */
-
-    // Declaration of vector variables for each column in Motorola's csv file, sized 300 for row count
-    // Purpose: Utilize parallel array data structures to contain attributes of same data element
-    /*
-    vector<string> mot_date(MAX_ROWS, "");
-    vector<double> mot_open(MAX_ROWS, 0.0);
-    vector<double> mot_high(MAX_ROWS, 0.0);
-    vector<double> mot_low(MAX_ROWS, 0.0);
-    vector<double> mot_close(MAX_ROWS, 0.0);
-    vector<double> mot_adj_close(MAX_ROWS, 0.0);
-    vector<int> mot_volume(MAX_ROWS, 0);
-    */
-
-   //FUNCTION CALL HERE
-   // -----------------------------------------------------------
-
-    // Function call to import_data function which will move data from csv files to vectors
-    ifstream lenovo_file("LNVGF.csv");
-    // ifstream motorola_file("MSI.csv");
-
-   // -----------------------------------------------------------
-
     // Reading in csv file values for Lenovo and inputting it into corresponding parallel arrays
     // Open the CSV file
+
+    ifstream lenovo_file("LNVGF.csv");
+    ifstream motorola_file("MSI.csv");
+
+   // -----------------------------------------------------------
+
     Stock lenovo;
 
     lenovo.SetDatesVec(lenovo_file);
-    // lenovo.SetOpensVec(lenovo_file);
-    // lenovo.SetHighsVec(lenovo_file);
-    // lenovo.SetLowsVec(lenovo_file);
-    // lenovo.SetClosesVec(lenovo_file);
-    // lenovo.SetAdjClosesVec(lenovo_file);
-    // lenovo.SetVolumesVec(lenovo_file);
-
-    for (int i = 0; i < MAX_ROWS; ++i)
-    {
-        cout << lenovo.GetDates()[i] << " ";
-    }
-
-    cout << "\n\n";
-
     lenovo.SetOpensVec(lenovo_file);
-    for (int j = 0; j < MAX_ROWS; ++j)
-    {
-        cout << lenovo.GetOpens()[j] << " ";
-    }
-    cout << "\n\n";
+    lenovo.SetHighsVec(lenovo_file);
+    lenovo.SetLowsVec(lenovo_file);
+    lenovo.SetClosesVec(lenovo_file);
+    lenovo.SetAdjClosesVec(lenovo_file);
+    lenovo.SetVolumesVec(lenovo_file);
+
+    //vector<string> temp = lenovo.GetDatesVec();
+    //cout << "\nempty? " << temp.empty() << endl;
+    //cout << temp.at(0);
+
+    // cout << "\n\n";
+
+    lenovo.SetStockRecords();
+
+    // lenovo.SetOpensVec(lenovo_file);
+    // for (int j = 0; j < 15; ++j)
+    // {
+    //     cout << lenovo.GetOpensVec()[j] << " ";
+    // }
+    // cout << "\n\n";
 
     // for (int i = 0; i < MAX_ROWS; ++i)
     // {

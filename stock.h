@@ -22,7 +22,7 @@ public:
     void SetVariance(double variance);
     void SetIQR(double iqr);
 
-    void SetDatesVec(std::ifstream & file);
+    void SetDatesVec(std::ifstream &file);
     void SetOpensVec(std::ifstream &file);
     void SetHighsVec(std::ifstream &file);
     void SetLowsVec(std::ifstream &file);
@@ -30,15 +30,18 @@ public:
     void SetAdjClosesVec(std::ifstream &file);
     void SetVolumesVec(std::ifstream &file);
 
+    void SetStockRecords();
+
     Stock GetStock();
 
-    const std::vector<std::string>& GetDates();
-    const std::vector<double>& GetOpens();
-    const std::vector<double>& GetHighs();
-    const std::vector<double>& GetLows();
-    const std::vector<double>& GetCloses();
-    const std::vector<double>& GetAdjCloses();
-    const std::vector<double>& GetVolumes();
+    std::vector<std::string> GetDatesVec();
+    std::vector<double> GetOpensVec();
+    std::vector<double> GetHighsVec();
+    std::vector<double> GetLowsVec();
+    std::vector<double> GetClosesVec();
+    std::vector<double> GetAdjClosesVec();
+    std::vector<double> GetVolumesVec();
+
     double GetMean();
     double GetRange();
     double GetStdDev();
