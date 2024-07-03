@@ -325,6 +325,7 @@ void Stock::SetStockRecords(ofstream& output_file)
         int format_counter = 1;
         if (!dates_.empty())
         {
+            output_file << "Dates: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << dates_[i] << " ";
@@ -341,6 +342,7 @@ void Stock::SetStockRecords(ofstream& output_file)
         format_counter = 1;
         if (!opens_.empty())
         {
+            output_file << "Opens: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << opens_[i] << " ";
@@ -352,9 +354,12 @@ void Stock::SetStockRecords(ofstream& output_file)
             }
             output_file << "\n\n";
         }
+
+
         format_counter = 1;
         if (!highs_.empty())
         {
+            output_file << "Highs: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << highs_[i] << " ";
@@ -367,9 +372,11 @@ void Stock::SetStockRecords(ofstream& output_file)
             output_file << "\n\n";
         }
 
+
         format_counter = 1;
         if (!lows_.empty())
         {
+            output_file << "Lows: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << lows_[i] << " ";
@@ -382,9 +389,11 @@ void Stock::SetStockRecords(ofstream& output_file)
             output_file << "\n\n";
         }
 
+
         format_counter = 1;
         if (!closes_.empty())
         {
+            output_file << "Closes: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << closes_[i] << " ";
@@ -401,6 +410,7 @@ void Stock::SetStockRecords(ofstream& output_file)
         format_counter = 1;
         if (!adj_closes_.empty())
         {
+            output_file << "Adj. Closes: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << adj_closes_[i] << " ";
@@ -413,9 +423,11 @@ void Stock::SetStockRecords(ofstream& output_file)
             output_file << "\n\n";
         }
 
+
         format_counter = 1;
         if (!volumes_.empty())
         {
+            output_file << "Volumes: \n";
             for (int i = 0; i < MAX_ROWS; ++i)
             {
                 output_file << volumes_[i] << " ";
