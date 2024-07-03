@@ -30,7 +30,7 @@ public:
     void SetAdjClosesVec(std::ifstream &file);
     void SetVolumesVec(std::ifstream &file);
 
-    void SetStockRecords();
+    void SetStockRecords(std::ofstream &output_file);
 
     Stock GetStock();
 

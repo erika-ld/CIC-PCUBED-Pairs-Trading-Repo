@@ -36,7 +36,8 @@ int main()
     lenovo.SetAdjClosesVec(lenovo_file);
     lenovo.SetVolumesVec(lenovo_file);
 
-    lenovo.SetStockRecords();
+    ofstream output_file("LenovoStockRecords.txt");
+    lenovo.SetStockRecords(output_file);
 
     // Declared & initialized boolean variables to be used to flag when there is opportunity for exercising pairs trading concepts
     // trade_flag will be raised (set to true) when a certain threshold of separation between stock values is reached

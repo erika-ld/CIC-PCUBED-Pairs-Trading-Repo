@@ -315,10 +315,8 @@ void Stock::SetVolumesVec(std::ifstream &file)
     }
 }
 
-void Stock::SetStockRecords()
+void Stock::SetStockRecords(ofstream& output_file)
 {
-    ofstream output_file("LenovoStockRecords.txt");
-
     if (!output_file.is_open())
     {
         cerr << "Error opening file!" << endl;
