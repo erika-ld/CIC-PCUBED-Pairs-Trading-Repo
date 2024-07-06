@@ -338,7 +338,7 @@ void Stock::SetStockRecords(ofstream& output_file)
             output_file << "\n\n";
         }
 
-
+        output_file << fixed << setprecision(6) << showpoint;
         format_counter = 1;
         if (!opens_.empty())
         {
@@ -423,7 +423,7 @@ void Stock::SetStockRecords(ofstream& output_file)
             output_file << "\n\n";
         }
 
-
+        output_file << setprecision(0) << noshowpoint;
         format_counter = 1;
         if (!volumes_.empty())
         {
