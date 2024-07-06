@@ -28,8 +28,8 @@ double Stock::CalcMean()
 
 double Stock::CalcRange()
 {
-    int max = adj_closes_.at(0);
-    int min = adj_closes_.at(0);
+    double max = adj_closes_.at(0);
+    double min = adj_closes_.at(0);
 
     for (int i = 0; i < MAX_ROWS; ++i)
     {
@@ -48,13 +48,15 @@ double Stock::CalcRange()
 
 double Stock::CalcStdDev()
 {
-    CalcVariance();
-    return (sqrt(variance_));
+    double variance = CalcVariance();
+    SetVariance(variance);
+    return (sqrt(variance));
 }
 
 double Stock::CalcVariance()
 {
-    CalcMean();
+    double mean = CalcMean();
+    SetMean(mean);
     double sum = 0.0;
 
     for (int i = 0; i < MAX_ROWS; ++i)

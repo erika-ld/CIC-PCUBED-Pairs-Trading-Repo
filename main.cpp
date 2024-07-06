@@ -48,6 +48,18 @@ int main()
     ofstream motorola_output_file("MotorolaStockRecords.txt");
     lenovo.SetStockRecords(lenovo_output_file);
     motorola.SetStockRecords(motorola_output_file);
+    cout << fixed << setprecision(4) << showpoint;
+    cout << lenovo.CalcMean() << endl;
+    cout << lenovo.CalcRange() << endl;
+    cout << lenovo.CalcIQR() << endl;
+    cout << lenovo.CalcVariance() << endl;
+    cout << lenovo.CalcStdDev() << endl;
+
+    lenovo.SetMean(lenovo.CalcMean());
+    lenovo.SetRange(lenovo.CalcRange());
+    lenovo.SetIQR(lenovo.CalcIQR());
+    lenovo.SetVariance(lenovo.CalcVariance());
+    lenovo.SetStdDev(lenovo.CalcStdDev());
 
     // Declared & initialized boolean variables to be used to flag when there is opportunity for exercising pairs trading concepts
     // trade_flag will be raised (set to true) when a certain threshold of separation between stock values is reached
