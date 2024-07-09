@@ -18,13 +18,10 @@ using namespace std;
 
 int main()
 {
-    cout << "working if this prints" << endl;
+    // Reading in csv file values for Lenovo & Motorola and inputting it into corresponding parallel arrays
 
-    // Reading in csv file values for Lenovo and inputting it into corresponding parallel arrays
-    // Open the CSV file
     ifstream lenovo_file("LNVGF.csv");
     ifstream motorola_file("MSI.csv");
-
 
     Stock lenovo;
     Stock motorola;
@@ -44,10 +41,6 @@ int main()
     lenovo.SetVolumesVec(lenovo_file);
     motorola.SetVolumesVec(motorola_file);
 
-    ofstream lenovo_output_file("LenovoStockRecords.txt");
-    ofstream motorola_output_file("MotorolaStockRecords.txt");
-    lenovo.SetStockRecords(lenovo_output_file);
-    motorola.SetStockRecords(motorola_output_file);
     cout << fixed << setprecision(4) << showpoint;
     cout << lenovo.CalcMean() << endl;
     cout << lenovo.CalcRange() << endl;
@@ -55,15 +48,29 @@ int main()
     cout << lenovo.CalcVariance() << endl;
     cout << lenovo.CalcStdDev() << endl;
 
+    cout << motorola.CalcMean() << endl;
+    cout << motorola.CalcRange() << endl;
+    cout << motorola.CalcIQR() << endl;
+    cout << motorola.CalcVariance() << endl;
+    cout << motorola.CalcStdDev() << endl;
+
+    motorola.SetMean(motorola.CalcMean());
+    motorola.SetRange(motorola.CalcRange());
+    motorola.SetIQR(motorola.CalcIQR());
+    motorola.SetVariance(motorola.CalcVariance());
+    motorola.SetStdDev(motorola.CalcStdDev());
+
     lenovo.SetMean(lenovo.CalcMean());
     lenovo.SetRange(lenovo.CalcRange());
     lenovo.SetIQR(lenovo.CalcIQR());
     lenovo.SetVariance(lenovo.CalcVariance());
     lenovo.SetStdDev(lenovo.CalcStdDev());
 
-    // Declared & initialized boolean variables to be used to flag when there is opportunity for exercising pairs trading concepts
-    // trade_flag will be raised (set to true) when a certain threshold of separation between stock values is reached
-    bool trade_flag = false;
+    ofstream lenovo_output_file("LenovoStockRecords.txt");
+    ofstream motorola_output_file("MotorolaStockRecords.txt");
+
+    lenovo.SetStockRecords(lenovo_output_file);
+    motorola.SetStockRecords(motorola_output_file);
 
     return 0;
 }

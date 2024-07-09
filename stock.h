@@ -21,7 +21,6 @@ public:
     void SetStdDev(double std_dev);
     void SetVariance(double variance);
     void SetIQR(double iqr);
-
     void SetDatesVec(std::ifstream &file);
     void SetOpensVec(std::ifstream &file);
     void SetHighsVec(std::ifstream &file);
@@ -33,7 +32,6 @@ public:
     void SetStockRecords(std::ofstream &output_file);
 
     Stock GetStock();
-
     std::vector<std::string> GetDatesVec();
     std::vector<double> GetOpensVec();
     std::vector<double> GetHighsVec();
@@ -41,13 +39,11 @@ public:
     std::vector<double> GetClosesVec();
     std::vector<double> GetAdjClosesVec();
     std::vector<double> GetVolumesVec();
-
     double GetMean();
     double GetRange();
     double GetStdDev();
     double GetVariance();
     double GetIQR();
-
 
 private:
     std::vector<std::string> dates_;
@@ -63,9 +59,6 @@ private:
     double std_dev_;
     double variance_;
     double iqr_;
-
-    double cointegration_;
-    bool trade_flag_;
 };
 
 #endif

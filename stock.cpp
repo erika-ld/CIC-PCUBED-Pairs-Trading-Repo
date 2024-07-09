@@ -324,6 +324,14 @@ void Stock::SetStockRecords(ofstream& output_file)
         cerr << "Error opening file!" << endl;
     } else
     {
+        output_file << fixed << setprecision(5) << showpoint;
+        output_file << "Mean: " << mean_ << "\n\n";
+        output_file << "Range: " << range_ << "\n\n";
+        output_file << "Standard Deviation: " << std_dev_ << "\n\n";
+        output_file << "Variance: " << variance_ << "\n\n";
+        output_file << "IQR: " << iqr_ << "\n\n";
+
+        output_file << setprecision(0) << noshowpoint;
         int format_counter = 1;
         if (!dates_.empty())
         {
