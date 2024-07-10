@@ -11,8 +11,11 @@
 
 using namespace std;
 
+//Global variables can be adjusted to fit different stock data scales
+//Relevant currently to Lenovo (LNVGF) & Motorola (MSI):
 const int MAX_ROWS = 253;
 const int MAX_COLS = 7;
+
 
 double Stock::CalcMean()
 {

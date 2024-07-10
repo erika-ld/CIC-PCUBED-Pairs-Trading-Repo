@@ -268,23 +268,6 @@ Time,LNVGF Adj Close,Box-Cox(LNVGF Adj Close)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-,,,, ,,,,,,,
-
-
 Box-Cox transformation (MSI Adj Close):
 
 Lambda = 0
