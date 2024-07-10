@@ -1,77 +1,83 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <string>
-#include <chrono>
 #include <cstdio>
 #include <iomanip>
 #include "stock.h"
+#include "stock.cpp"
+
 // Yahoo Finance: https://finance.yahoo.com/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAKYPLNT2K6cohZ130zXknBtMd81b1MTutcH0ZzCnv0vjDUrBf6o4hYzi9Pl5jfXbbYCn-V3ylSQZmk3_iVA7fjdd5N3q3UrARD-KCno81YF-3KgzLVzye1ltw3RUmfuKwhk1_DUOU85vzbUrBCN5u1952eI-YQ1fTi7COWRSeVVd
 // Stocks to be analyzed: Lenovo (LNVGF) & Motorola (MSI)
 
 using namespace std;
 
+
+
 int main()
 {
-    cout << "working if this prints" << endl;
-    
-    // Declaration of vector variables for each column in Lenovo's csv file, sized 300 for row count
-    // Purpose: Utilize parallel array data structures to contain attributes of same data element
-    vector<string> len_date(300, "");
-    vector<double> len_open(300, 0.0);
-    vector<double> len_high(300, 0.0);
-    vector<double> len_low(300, 0.0);
-    vector<double> len_close(300, 0.0);
-    vector<double> len_adj_close(300, 0.0);
-    vector<int> len_volume(300, 0);
+    // Reading in csv file values for Lenovo & Motorola 
+    // and inputting it into corresponding parallel arrays
+    ifstream lenovo_file("LNVGF.csv");
+    ifstream motorola_file("MSI.csv");
 
-    // Declaration of vector variables for each column in Motorola's csv file, sized 300 for row count
-    // Purpose: Utilize parallel array data structures to contain attributes of same data element
-    vector<string> mot_date(300, "");
-    vector<double> mot_open(300, 0.0);
-    vector<double> mot_high(300, 0.0);
-    vector<double> mot_low(300, 0.0);
-    vector<double> mot_close(300, 0.0);
-    vector<double> mot_adj_close(300, 0.0);
-    vector<int> mot_volume(300, 0);
+    //Create instances of Stock objects
+    Stock lenovo;
+    Stock motorola;
 
-    // Reading in csv file values for Lenovo and inputting it into corresponding parallel arrays
-    fstream lenovo_input_file;
-    lenovo_input_file.open("LNVGF.csv", ios::in);
+    //Populate parallel vectors with corresponding stock data, pulled from .csv files
+    lenovo.SetDatesVec(lenovo_file);
+    motorola.SetDatesVec(motorola_file);
+    lenovo.SetOpensVec(lenovo_file);
+    motorola.SetOpensVec(motorola_file);
+    lenovo.SetHighsVec(lenovo_file);
+    motorola.SetHighsVec(motorola_file);
+    lenovo.SetLowsVec(lenovo_file);
+    motorola.SetLowsVec(motorola_file);
+    lenovo.SetClosesVec(lenovo_file);
+    motorola.SetClosesVec(motorola_file);
+    lenovo.SetAdjClosesVec(lenovo_file);
+    motorola.SetAdjClosesVec(motorola_file);
+    lenovo.SetVolumesVec(lenovo_file);
+    motorola.SetVolumesVec(motorola_file);  
 
-    if (!lenovo_input_file.is_open())
-    {
-        cerr << "Error: LNVGF.csv could not be opened." << endl;
-        return 0;
-    }
+    //Calculate & print the statistical data for each stock
+    cout << fixed << setprecision(5) << showpoint;
+    cout << "Lenovo" << endl;
+    cout << "Mean: " << lenovo.CalcMean() << endl;
+    cout << "Range: " << lenovo.CalcRange() << endl;
+    cout << "Std. Dev.: " << lenovo.CalcStdDev() << endl;
+    cout << "Variance: " << lenovo.CalcVariance() << endl;
+    cout << "IQR: " << lenovo.CalcIQR() << endl;
+    cout << "\n\n";
 
-    string row;
+    cout << "Motorola" << endl;
+    cout << "Mean: " << motorola.CalcMean() << endl;
+    cout << "Range: " << motorola.CalcRange() << endl;
+    cout << "Std. Dev.: " << motorola.CalcStdDev() << endl;
+    cout << "Variance: " << motorola.CalcVariance() << endl;
+    cout << "IQR: " << motorola.CalcIQR() << endl;
 
-    while (getline(lenovo_input_file, row))
-    {
-        cout << row << endl; // Print the current line
-    }
+    //Set the private member variables with the results of the statistical calculations
+    motorola.SetMean(motorola.CalcMean());
+    motorola.SetRange(motorola.CalcRange());
+    motorola.SetIQR(motorola.CalcIQR());
+    motorola.SetVariance(motorola.CalcVariance());
+    motorola.SetStdDev(motorola.CalcStdDev());
+    lenovo.SetMean(lenovo.CalcMean());
+    lenovo.SetRange(lenovo.CalcRange());
+    lenovo.SetIQR(lenovo.CalcIQR());
+    lenovo.SetVariance(lenovo.CalcVariance());
+    lenovo.SetStdDev(lenovo.CalcStdDev());
 
-    //Declared & initialized double variables for Lenovo (len) to be used in calculation of statistical values
-    double len_mean = 0.0;
-    double len_range = 0.0;
-    double len_std_dev = 0.0;
-    double len_variance = 0.0;
-    double len_iqr = 0.0;
+    //Instantiate ofstream objects to print the stock data & calculations
+    ofstream lenovo_output_file("LenovoStockRecords.txt");
+    ofstream motorola_output_file("MotorolaStockRecords.txt");
 
-    // Declared & initialized double variables for Motorola (mot) to be used in calculation of statistical values
-    double mot_mean = 0.0;
-    double mot_range = 0.0;
-    double mot_std_dev = 0.0;
-    double mot_variance = 0.0;
-    double mot_iqr = 0.0;
-
-    //Declared & initialized double variables for the cointegration of the two data sets
-    double cointegration = 0.0;
-
-    //Declared & initialized boolean variables to be used to flag when there is opportunity for exercising pairs trading concepts
-    //trade_flag will be raised (set to true) when a certain threshold of separation between stock values is reached
-    bool trade_flag = false;
+    //Call function to set stock records with stock data & calculated values
+    lenovo.SetStockRecords(lenovo_output_file);
+    motorola.SetStockRecords(motorola_output_file);
 
     return 0;
 }

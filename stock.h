@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 class Stock
 {
@@ -14,21 +16,29 @@ public:
     double CalcVariance();
     double CalcIQR();
 
-    void SetMean(double Mean);
-    void SetRange(double Range);
+    void SetMean(double mean);
+    void SetRange(double range);
     void SetStdDev(double std_dev);
-    void SetVariance(double Variance);
-    void SetIQR(double IQR);
+    void SetVariance(double variance);
+    void SetIQR(double iqr);
+    void SetDatesVec(std::ifstream &file);
+    void SetOpensVec(std::ifstream &file);
+    void SetHighsVec(std::ifstream &file);
+    void SetLowsVec(std::ifstream &file);
+    void SetClosesVec(std::ifstream &file);
+    void SetAdjClosesVec(std::ifstream &file);
+    void SetVolumesVec(std::ifstream &file);
+
+    void SetStockRecords(std::ofstream &output_file);
 
     Stock GetStock();
-
-    const std::vector<std::string>& GetDates();
-    const std::vector<double>& GetOpens();
-    const std::vector<double>& GetHighs();
-    const std::vector<double>& GetLows();
-    const std::vector<double>& GetCloses();
-    const std::vector<double>& GetAdjCloses();
-    const std::vector<double>& GetVolumes();
+    std::vector<std::string> GetDatesVec();
+    std::vector<double> GetOpensVec();
+    std::vector<double> GetHighsVec();
+    std::vector<double> GetLowsVec();
+    std::vector<double> GetClosesVec();
+    std::vector<double> GetAdjClosesVec();
+    std::vector<double> GetVolumesVec();
     double GetMean();
     double GetRange();
     double GetStdDev();
@@ -49,9 +59,6 @@ private:
     double std_dev_;
     double variance_;
     double iqr_;
-
-    double cointegration_;
-    bool trade_flag_;
 };
 
 #endif
